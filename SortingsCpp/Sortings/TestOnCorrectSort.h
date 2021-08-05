@@ -1,9 +1,7 @@
-#ifndef HeaderUnitTests_H_
-#define HeaderUnitTests_H_
+
 #pragma once
 
 #include <vector>
-#pragma once
 #include "Sortings.h"
 #include <iostream>
 
@@ -100,5 +98,3 @@ class UnitTests
 	}
 	};
 
-
-#endif //HeaderUnitTests_H_

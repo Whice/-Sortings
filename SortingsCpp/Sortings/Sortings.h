@@ -1,5 +1,4 @@
-#ifndef HeaderSorting_H_
-#define HeaderSorting_H_
+
 #pragma once
 
 #include <vector>
@@ -38,5 +37,3 @@ class Sorting
 		return arrayForSort;
 	}
 };
-
-#endif //HeaderSorting_H_

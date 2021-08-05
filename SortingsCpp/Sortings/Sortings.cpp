@@ -1,9 +1,7 @@
-﻿#ifndef Headermain_H_
-#define Headermain_H_
+﻿
 #pragma once
 
 #include "TestOnCorrectSort.h"
-#pragma once
 #include "Sortings.h"
 #include "SpeedTests.h"
 #include <iostream>
@@ -23,6 +21,3 @@ int main()
 
 	_getch();
 }
-
-
-#endif //Headermain_H_

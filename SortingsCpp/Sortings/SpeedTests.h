@@ -1,10 +1,8 @@
-#ifndef HeaderSpeedTests_H_
-#define HeaderSpeedTests_H_
+
 #pragma once
 
 #include <iostream>
 #include <vector>
-#pragma once
 #include "Sortings.h"
 #include <chrono>
 
@@ -87,5 +85,3 @@ class SpeedTests
 
 	}
 };
-
-#endif //HeaderSpeedTests_H_
