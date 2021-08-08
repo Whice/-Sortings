@@ -12,12 +12,18 @@
 
 int main()
 {
-	//Установить русский
-	setlocale(LC_ALL, ".UTF8");
 
 	//Если проходятся тест на стабильность, то можно тестировать на скорость
-	if(UnitTests::RunAllTests())
-		SpeedTests::RunAllTests();
+	if (UnitTests::RunAllTests())
+	{
+		int lengthArrays = 10;
+		//Установить русский
+		setlocale(LC_ALL, "");
+		cout << "Введите размер массива для теста скорости: ";
+		cin >> lengthArrays;
+		cout << endl;
+		SpeedTests::RunAllTests(lengthArrays);
+	}
 
 	_getch();
 }

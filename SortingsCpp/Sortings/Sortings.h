@@ -20,7 +20,7 @@ class Sorting
 
 			return arrayForSwap;
 		}
-
+			
 	///<summary>
 	/// Пузырьковая сортировка
 	///</summary>
@@ -50,13 +50,13 @@ class Sorting
 		while (lastCheckItem < arrayForSort.size())
 		{
 			//Найти куда его поставить, "передняя" часть массива уже будет сортированая всегда
-			while (i > -1 && arrayForSort[lastCheckItem] < arrayForSort[i])
+			while (i > -1 && arrayForSort[i+1] < arrayForSort[i])
 			{
+				//Поменять местами с предыдущим
+				arrayForSort = Swap(arrayForSort, i , i+1);
 				--i;
 			}
 
-			//Поставить его на место! Епта!
-			arrayForSort= Swap(arrayForSort, i + 1, lastCheckItem);
 			//перейти к следущему элементу.
 			i = lastCheckItem;
 			++lastCheckItem;

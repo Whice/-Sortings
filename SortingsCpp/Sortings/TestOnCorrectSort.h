@@ -8,11 +8,15 @@
 using namespace std;
 class UnitTests
 {
+
 	/// <summary>
 	/// «апустить все тесты.
 	/// </summary>
 public: static bool RunAllTests()
 {
+
+	//Установить русский
+	setlocale(LC_ALL, ".UTF8");
 	bool isGoodTesting = true;
 
 	//Задать рамер массива
@@ -22,7 +26,7 @@ public: static bool RunAllTests()
 	isGoodTesting = isGoodTesting && TestBubbleSort(sizeArray, numberOfStart);
 	isGoodTesting = isGoodTesting && TestSortByFootnote(sizeArray, numberOfStart);
 
-	
+
 	if (isGoodTesting)
 	{
 		cout << "Тестирование пройдено: да\n" << endl;
