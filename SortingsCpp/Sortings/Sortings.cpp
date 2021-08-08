@@ -13,7 +13,7 @@
 int main()
 {
 	//Установить русский
-	setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL, ".UTF8");
 
 	//Если проходятся тест на стабильность, то можно тестировать на скорость
 	if(UnitTests::RunAllTests())

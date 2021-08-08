@@ -1,4 +1,4 @@
-
+п»ї
 #pragma once
 
 #include <iostream>
@@ -11,29 +11,41 @@ using namespace std;
 class SpeedTests
 {
 	/// <summary>
-	/// Запустить все тесты.
+	/// В«Р°РїСѓСЃС‚РёС‚СЊ РІСЃРµ С‚РµСЃС‚С‹.
 	/// </summary>
 	public: static void RunAllTests()
 	{
 		int lengthArrays = 1'000;
 		string message = "";
 
-		message = "Сортировка пузырьком, массив по возрастанию:";
+		message = "РЎРѕСЂС‚РёСЂРѕРІРєР° РїСѓР·С‹СЂСЊРєРѕРј, РјР°СЃСЃРёРІ РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ:";
 		vector<int> brokenArray = CreateArrayAscending(lengthArrays);
 		TestSpeedBubleSort(brokenArray, message);
-		message = "Сортировка пузырьком, массив со смешанными значениями:";
+		message = "РЎРѕСЂС‚РёСЂРѕРІРєР° РїСѓР·С‹СЂСЊРєРѕРј, РјР°СЃСЃРёРІ СЃРѕ СЃРјРµС€Р°РЅРЅС‹РјРё Р·РЅР°С‡РµРЅРёВ¤РјРё:";
 		brokenArray = CreateArrayMixed(lengthArrays);
 		TestSpeedBubleSort(brokenArray, message);
-		message = "Сортировка пузырьком, массив по убыванию:";
+		message = "РЎРѕСЂС‚РёСЂРѕРІРєР° РїСѓР·С‹СЂСЊРєРѕРј, РјР°СЃСЃРёРІ РїРѕ СѓР±С‹РІР°РЅРёСЋ:";
 		brokenArray = CreateArrayDescending(lengthArrays);
 		TestSpeedBubleSort(brokenArray, message);
+		
+		message = "РЎРѕСЂС‚РёСЂРѕРІРєР° СЃРЅРѕСЃРєРѕР№, РјР°СЃСЃРёРІ РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ:";
+		brokenArray = CreateArrayAscending(lengthArrays);
+		TestSpeedSortByFootnote(brokenArray, message);
+		message = "РЎРѕСЂС‚РёСЂРѕРІРєР° СЃРЅРѕСЃРєРѕР№, РјР°СЃСЃРёРІ СЃРѕ СЃРјРµС€Р°РЅРЅС‹РјРё Р·РЅР°С‡РµРЅРёВ¤РјРё:";
+		brokenArray = CreateArrayMixed(lengthArrays);
+		TestSpeedSortByFootnote(brokenArray, message);
+		message = "РЎРѕСЂС‚РёСЂРѕРІРєР° СЃРЅРѕСЃРєРѕР№, РјР°СЃСЃРёРІ РїРѕ СѓР±С‹РІР°РЅРёСЋ:";
+		brokenArray = CreateArrayDescending(lengthArrays);
+		TestSpeedSortByFootnote(brokenArray, message);
+		
+
 
 	}
 
 
-#pragma region Создание массивов для сортировки
+#pragma region РЎРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІРѕРІ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё
 
-	/// <summary>Создание нового массива со значениями по возрастанию.</summary>
+	/// <summary>РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ РјР°СЃСЃРёРІР° СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ.</summary>
 	private: static vector<int> CreateArrayAscending(int length)
 	{
 		vector<int> mas = vector<int>(length);
@@ -43,7 +55,7 @@ class SpeedTests
 		}
 		return mas;
 	}
-	/// <summary>Создание нового массива со смешанными значениями(чердование отрицательных и положительных чисел).</summary>
+	/// <summary>РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ РјР°СЃСЃРёРІР° СЃРѕ СЃРјРµС€Р°РЅРЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё(С‡РµСЂРґРѕРІР°РЅРёРµ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… Рё РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… С‡РёСЃРµР»).</summary>
 	private: static vector<int> CreateArrayMixed(int length)
 {
 	vector<int> mas = vector<int>(length);
@@ -56,7 +68,7 @@ class SpeedTests
 	}
 	return mas;
 }
-	/// <summary>Создание нового массива со значениями по убыванию.</summary>
+	/// <summary>РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ РјР°СЃСЃРёРІР° СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё РїРѕ СѓР±С‹РІР°РЅРёСЋ.</summary>
 	private: static vector<int> CreateArrayDescending(int length)
 {
 	vector<int> mas = vector<int>(length);
@@ -70,18 +82,35 @@ class SpeedTests
 #pragma endregion
 
 	/// <summary>
-	/// Тест скорости сортировки пузырьком
+	/// РўРµСЃС‚ СЃРєРѕСЂРѕСЃС‚Рё СЃРѕСЂС‚РёСЂРѕРІРєРё РїСѓР·С‹СЂСЊРєРѕРј
 	/// </summary>
 	private: static void TestSpeedBubleSort(vector<int> brokenArray, string message)
 	{
-		//Запомнить время запуска.
+		//Р—Р°РїРѕРјРЅРёС‚СЊ РІСЂРµРјСЏ Р·Р°РїСѓСЃРєР°.
 		auto start = chrono::system_clock::now();
 
-		Sorting::BubbleSort(brokenArray);
+		brokenArray = Sorting::BubbleSort(brokenArray);
 
 		auto end = chrono::system_clock::now();
 		cout << message << endl;
-		cout << "Выполнение заняло: " << ((chrono::duration<double>)(end - start)).count()<<endl;
+		cout << "В¬С‹РїРѕР»РЅРµРЅРёРµ Р·Р°РЅВ¤Р»Рѕ: " << ((chrono::duration<double>)(end - start)).count()<<endl;
 
 	}
+
+/*
+РўРµСЃС‚ СЃРєРѕСЂРѕСЃС‚Рё СЃРѕСЂС‚РёСЂРѕРІРєРё СЃРЅРѕСЃРєРѕР№
+*/
+private: static void TestSpeedSortByFootnote(vector<int> brokenArray, string message)
+{
+	//Р—Р°РїРѕРјРЅРёС‚СЊ РІСЂРµРјСЏ Р·Р°РїСѓСЃРєР°.
+	auto start = chrono::system_clock::now();
+
+	brokenArray = Sorting::SortByFootnote(brokenArray);
+
+	auto end = chrono::system_clock::now();
+	cout << message << endl;
+	cout << "В¬С‹РїРѕР»РЅРµРЅРёРµ Р·Р°РЅВ¤Р»Рѕ: " << ((chrono::duration<double>)(end - start)).count() << endl;
+
+}
+
 };

@@ -9,92 +9,121 @@ using namespace std;
 class UnitTests
 {
 	/// <summary>
-	/// Запустить все тесты.
+	/// В«Р°РїСѓСЃС‚РёС‚СЊ РІСЃРµ С‚РµСЃС‚С‹.
 	/// </summary>
-	public: static bool RunAllTests()
+public: static bool RunAllTests()
+{
+	bool isGoodTesting = true;
+
+	//Р—Р°РґР°С‚СЊ СЂР°РјРµСЂ РјР°СЃСЃРёРІР°
+	int sizeArray = 29;
+	int numberOfStart = 0;
+
+	isGoodTesting = isGoodTesting && TestBubbleSort(sizeArray, numberOfStart);
+	isGoodTesting = isGoodTesting && TestSortByFootnote(sizeArray, numberOfStart);
+
+	
+	if (isGoodTesting)
 	{
-		bool isGoodTesting = true;
+		cout << "РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕР№РґРµРЅРѕ: РґР°\n" << endl;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 
-		//Задать рамер массива
-		int sizeArray = 29;
-		int numberOfStart = 0;
-
-		isGoodTesting= isGoodTesting && TestBubbleSort(sizeArray, numberOfStart);
-
-		if (isGoodTesting)
-		{
-			cout << "Тестирование пройдено: да\n" << endl;
-			return true;
-		}
-		else
-		{
+		/// <summary>
+		/// РЎСЂР°РІРЅРёС‚СЊ РјР°СЃСЃРёРІ СЃ РїСЂР°РІРёР»СЊРЅС‹Рј(РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рј).
+		/// </summary>
+		/// <param name="arrayForTest">РњР°СЃСЃРёРІ, РєРѕС‚РѕСЂС‹Р№ РЅР°РґРѕ РїСЂРѕРІРµСЂРёС‚СЊ.</param>
+		/// <param name="correctArray">РњР°СЃСЃРёРІ, РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РЅР°РґРѕ РїСЂРѕРІРµСЂРёС‚СЊ.</param>
+		/// <returns></returns>
+private: static bool ComparisonWithCorrectArray(vector<int> arrayForTest, vector<int> correctArray)
+{
+	for (int i = 0; i < arrayForTest.size(); i++)
+	{
+		if (arrayForTest[i] != correctArray[i])
 			return false;
-		}
+	}
+	return true;
+}
+
+
+		 /// <summary>
+		 /// РџСЂРѕС‚РµСЃС‚РёСЂРѕРІР°С‚СЊ РјР°СЃСЃРёРІ, СЃСЂР°РІРЅРёРІ РµРіРѕ СЃ РїСЂР°РІРёР»СЊРЅРѕ Р·Р°РїРѕР»РЅРµРЅС‹Рј Р°РЅР°Р»РѕРіРѕРј.
+		 /// </summary>
+		 /// <param name="arrayForTest">РњР°СЃСЃРёРІ, РєРѕС‚РѕСЂС‹Р№ РЅР°РґРѕ РїСЂРѕРІРµСЂРёС‚СЊ.</param>
+		 /// <param name="sizeOfArray">Р Р°Р·РјРµСЂ Р°РЅР°Р»РѕРіР°.</param>
+		 /// <param name="numberOfStart">Р§РёСЃР»Рѕ - РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚.</param>
+		 /// <returns></returns>
+private: static bool TestThroughOrderedArray(vector<int> arrayForTest, int sizeOfArray, int numberOfStart)
+{
+	//Р·Р°РїРѕР»РЅРёС‚СЊ РїСЂР°РІРёР»СЊРЅС‹Р№ РјР°СЃСЃРёРІ РІ РїСЂР°РІРёР»СЊРЅРѕ РїРѕСЂСЏРґРєРµ.
+	vector<int> correctArray;
+	for (int i = numberOfStart; i < numberOfStart + sizeOfArray; i++)
+	{
+		correctArray.push_back(i);
 	}
 
-	/// <summary>
-	/// Сравнить массив с правильным(отсортированным).
-	/// </summary>
-	/// <param name="arrayForTest">Массив, который надо проверить.</param>
-	/// <param name="correctArray">Массив, по которому надо проверить.</param>
-	/// <returns></returns>
-	private: static bool ComparisonWithCorrectArray(vector<int> arrayForTest, vector<int> correctArray)
-		{
-			for (int i = 0; i < arrayForTest.size(); i++)
-			{
-				if (arrayForTest[i] != correctArray[i])
-					return false;
-			}
-			return true;
-		}
+	bool result = ComparisonWithCorrectArray(arrayForTest, correctArray);
 
+	return result;
+}
+		 /// <summary>
+		 /// РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃРѕСЂС‚РёСЂРѕРІРєРё РїСѓР·С‹СЂСЊРєРѕРј
+		 /// </summary>
+private: static bool TestBubbleSort(int sizeArray, int numberOfStart)
+{
+	//РЎРѕР·РґР°С‚СЊ РЅРµРѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ
+	vector<int> brokenArray;
+	for (int i = sizeArray - 1; i >= numberOfStart; i--)
+		brokenArray.push_back(i);
 
-	/// <summary>
-	/// Протестировать массив, сравнив его с правильно заполненым аналогом.
-	/// </summary>
-	/// <param name="arrayForTest">Массив, который надо проверить.</param>
-	/// <param name="sizeOfArray">Размер аналога.</param>
-	/// <param name="numberOfStart">Число - первый элемент.</param>
-	/// <returns></returns>
-	private: static bool TestThroughOrderedArray(vector<int> arrayForTest, int sizeOfArray, int numberOfStart)
-		{
-			//заполнить правильный массив в правильно порядке.
-			vector<int> correctArray;
-			for (int i = numberOfStart; i < numberOfStart + sizeOfArray; i++)
-			{
-				correctArray.push_back(i);
-			}
+	//РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РµРіРѕ
+	vector<int> notBrokenArray = Sorting::BubbleSort(brokenArray);
 
-			bool result = ComparisonWithCorrectArray(arrayForTest, correctArray);
+	//РїСЂРѕРІРµСЂРёС‚СЊ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ СЃРѕСЂС‚РёСЂРѕРІРєРё
+	bool isGoodTesting = TestThroughOrderedArray(notBrokenArray, sizeArray, numberOfStart);
 
-			return result;
-		}
-	/// <summary>
-	/// Тестирование сортировки пузырьком
-	/// </summary>
-	private: static bool TestBubbleSort(int sizeArray, int numberOfStart)
+	if (isGoodTesting)
 	{
-		//Создать неотсортированный массив
-		vector<int> brokenArray;
-		for (int i = sizeArray - 1; i >= numberOfStart; i--)
-			brokenArray.push_back(i);
-
-		//отсортировать его
-		vector<int> notBrokenArray = Sorting::BubbleSort(brokenArray);
-
-		//проверить правильность сортировки
-		bool isGoodTesting = TestThroughOrderedArray(notBrokenArray, sizeArray, numberOfStart);
-
-		if (isGoodTesting)
-		{
-			return true;
-		}
-		else
-		{
-			std::cout << "Тестирование пройдено: нет." << endl;
-			return false;
-		}
-
+		return true;
 	}
-	};
+	else
+	{
+		std::cout << "РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃРѕСЂС‚РёСЂРѕРІРєРё РїСѓР·С‹СЂСЊРєРѕРј РїСЂРѕР№РґРµРЅРѕ: РЅРµС‚." << endl;
+		return false;
+	}
+
+}
+/*
+РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃРѕСЂС‚РёСЂРѕРІРєРё СЃРЅРѕСЃРєРѕР№
+*/
+private: static bool TestSortByFootnote(int sizeArray, int numberOfStart)
+{
+	//РЎРѕР·РґР°С‚СЊ РЅРµРѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ
+	vector<int> brokenArray;
+	for (int i = sizeArray - 1; i >= numberOfStart; i--)
+		brokenArray.push_back(i);
+
+	//РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РµРіРѕ
+	vector<int> notBrokenArray = Sorting::SortByFootnote(brokenArray);
+
+	//РїСЂРѕРІРµСЂРёС‚СЊ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ СЃРѕСЂС‚РёСЂРѕРІРєРё
+	bool isGoodTesting = TestThroughOrderedArray(notBrokenArray, sizeArray, numberOfStart);
+
+	if (isGoodTesting)
+	{
+		return true;
+	}
+	else
+	{
+		std::cout << "РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃРѕСЂС‚РёСЂРѕРІРєРё СЃРЅРѕСЃРєРѕР№ РїСЂРѕР№РґРµРЅРѕ: РЅРµС‚." << endl;
+		return false;
+	}
+
+}
+};
 

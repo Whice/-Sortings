@@ -1,16 +1,16 @@
-
+﻿
 #pragma once
 
 #include <vector>
 
 using namespace std;
 ///<summary>
-/// ����� ���������� ���������� � ������� ��� ���.
+/// Класс содержащий сортировки и функции для них.
 ///</summary>
 class Sorting
 {
 		///<summary>
-		/// ������� ������ ����������.
+		/// Функция обмена значениями.
 		///</summary>
 	private: static  vector<int> Swap(vector<int> arrayForSwap, int i, int j)
 		{
@@ -22,7 +22,7 @@ class Sorting
 		}
 
 	///<summary>
-	/// ����������� ����������
+	/// Пузырьковая сортировка
 	///</summary>
 	public: static vector<int> BubbleSort(vector<int> arrayForSort)
 	{
@@ -34,6 +34,33 @@ class Sorting
 					arrayForSort = Swap(arrayForSort, i, j);
 			}
 
+		return arrayForSort;
+	}
+	/*
+	Сортировка сноской
+	@args:
+	arrayForSort - массив для сортировки
+	*/
+	public: static vector<int> SortByFootnote(vector<int> arrayForSort)
+	{
+		// Позиция проверяемого элемента
+		int lastCheckItem = 1;
+		//обычный счетчик (i всегда место элемента, который стоит до проверяемого)
+		int i = lastCheckItem-1;
+		while (lastCheckItem < arrayForSort.size())
+		{
+			//Найти куда его поставить, "передняя" часть массива уже будет сортированая всегда
+			while (i > -1 && arrayForSort[lastCheckItem] < arrayForSort[i])
+			{
+				--i;
+			}
+
+			//Поставить его на место! Епта!
+			arrayForSort= Swap(arrayForSort, i + 1, lastCheckItem);
+			//перейти к следущему элементу.
+			i = lastCheckItem;
+			++lastCheckItem;
+		}
 		return arrayForSort;
 	}
 };
