@@ -38,7 +38,17 @@ class SpeedTests
 		message = "Сортировка сноской, массив по убыванию:";
 		brokenArray = CreateArrayDescending(lengthArrays);
 		TestSpeedSortByFootnote(brokenArray, message);
-		
+
+		message = "Медленная сортировка, массив по возрастанию:";
+		brokenArray = CreateArrayAscending(lengthArrays);
+		TestSpeedSlowSort(brokenArray, message);
+		message = "Медленная сортировка, массив со смешанными значениями:";
+		brokenArray = CreateArrayMixed(lengthArrays);
+		TestSpeedSlowSort(brokenArray, message);
+		message = "Медленная сортировка, массив по убыванию:";
+		brokenArray = CreateArrayDescending(lengthArrays);
+		TestSpeedSlowSort(brokenArray, message);
+
 
 
 	}
@@ -85,7 +95,7 @@ class SpeedTests
 	/// <summary>
 	/// Тест скорости сортировки пузырьком
 	/// </summary>
-	private: static void TestSpeedBubleSort(vector<int> brokenArray, string message)
+	private: static void TestSpeedBubleSort(vector<int> &brokenArray, string message)
 	{
 		//Запомнить время запуска.
 		auto start = chrono::system_clock::now();
@@ -101,12 +111,27 @@ class SpeedTests
 /*
 Тест скорости сортировки сноской
 */
-private: static void TestSpeedSortByFootnote(vector<int> brokenArray, string message)
+private: static void TestSpeedSortByFootnote(vector<int> &brokenArray, string message)
 {
 	//Запомнить время запуска.
 	auto start = chrono::system_clock::now();
 
 	brokenArray = Sorting::SortByFootnote(brokenArray);
+
+	auto end = chrono::system_clock::now();
+	cout << message << endl;
+	cout << "Выполнение заняло: " << ((chrono::duration<double>)(end - start)).count() << endl;
+
+}
+		 /*
+		 Тест скорости медленной сортировки
+		 */
+private: static void TestSpeedSlowSort(vector<int> &brokenArray, string message)
+{
+	//Запомнить время запуска.
+	auto start = chrono::system_clock::now();
+
+	brokenArray = Sorting::SlowSort(brokenArray);
 
 	auto end = chrono::system_clock::now();
 	cout << message << endl;

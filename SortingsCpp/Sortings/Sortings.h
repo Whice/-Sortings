@@ -12,7 +12,7 @@ class Sorting
 		///<summary>
 		/// Функция обмена значениями.
 		///</summary>
-	private: static  vector<int> Swap(vector<int> arrayForSwap, int i, int j)
+	private: static  vector<int>& Swap(vector<int> &arrayForSwap, int i, int j)
 		{
 			int buffer = arrayForSwap[i];
 			arrayForSwap[i] = arrayForSwap[j];
@@ -24,7 +24,7 @@ class Sorting
 	///<summary>
 	/// Пузырьковая сортировка
 	///</summary>
-	public: static vector<int> BubbleSort(vector<int> arrayForSort)
+	public: static vector<int>& BubbleSort(vector<int> &arrayForSort)
 	{
 		int size = arrayForSort.size();
 		for (int i = 0; i < size; i++)
@@ -36,12 +36,13 @@ class Sorting
 
 		return arrayForSort;
 	}
+
 	/*
 	Сортировка сноской
 	@args:
 	arrayForSort - массив для сортировки
 	*/
-	public: static vector<int> SortByFootnote(vector<int> arrayForSort)
+	public: static vector<int>& SortByFootnote(vector<int> &arrayForSort)
 	{
 		// Позиция проверяемого элемента
 		int lastCheckItem = 1;
@@ -63,4 +64,31 @@ class Sorting
 		}
 		return arrayForSort;
 	}
+
+/*Рекурсивный алгоритм для медленной сортировки*/
+private: static vector<int>& SlowSortRecursion(vector<int> &arrayForSort, int i, int j)
+{
+	if (i >= j)
+	{
+		return arrayForSort;
+	}
+
+	int m = (i + j) / 2;
+	SlowSortRecursion(arrayForSort, i, m);
+	SlowSortRecursion(arrayForSort, m+1, j);
+	if (arrayForSort[m] > arrayForSort[j])
+	{
+		arrayForSort = Swap(arrayForSort, m, j);
+	}
+	SlowSortRecursion(arrayForSort, i, j-1);
+	return arrayForSort;
+}
+/*Медленная сортировка
+@args:
+	arrayForSort - массив для сортировки*/
+public: static vector<int>& SlowSort(vector<int> &arrayForSort)
+{
+	return SlowSortRecursion(arrayForSort, 0, arrayForSort.size() - 1);
+}
+
 };

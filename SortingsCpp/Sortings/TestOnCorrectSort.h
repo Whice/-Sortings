@@ -127,7 +127,32 @@ private: static bool TestSortByFootnote(int sizeArray, int numberOfStart)
 		std::cout << "Тестирование сортировки сноской пройдено: нет." << endl;
 		return false;
 	}
+}
+		 /*
+Тестирование медленной сортировки
+*/
+private: static bool TestSlowSort(int sizeArray, int numberOfStart)
+{
+	//Создать неотсортированный массив
+	vector<int> brokenArray;
+	for (int i = sizeArray - 1; i >= numberOfStart; i--)
+		brokenArray.push_back(i);
 
+	//отсортировать его
+	vector<int> notBrokenArray = Sorting::SlowSort(brokenArray);
+
+	//проверить правильность сортировки
+	bool isGoodTesting = TestThroughOrderedArray(notBrokenArray, sizeArray, numberOfStart);
+
+	if (isGoodTesting)
+	{
+		return true;
+	}
+	else
+	{
+		std::cout << "Тестирование сортировки сноской пройдено: нет." << endl;
+		return false;
+	}
 }
 };
 
