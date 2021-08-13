@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Sortings
@@ -8,12 +7,12 @@ namespace Sortings
     {
         static void Main(string[] args)
         {
+            //Создание таймера
             Stopwatch sw = new();
 
-            int arraySize = 1000000;
+            int arraySize = 1_000_000_000;
             int startPosition = 0;
 
-            //List<int> unorderedArray = new();
             int[] unorderedArray = new int[arraySize];
             for (int i = arraySize-1; i > startPosition; i--)
             {
@@ -22,8 +21,7 @@ namespace Sortings
 
             sw.Start();
 
-            //List<int> orderedArray = SortingMethods.BubbleSort(unorderedArray);
-            int[] orderedArray = SortingMethods.BubbleSort(unorderedArray);
+            int[] orderedArray = SortingMethods.CombSort(unorderedArray);
 
             sw.Stop();
 
@@ -32,8 +30,11 @@ namespace Sortings
             if (testValid) Console.WriteLine("Test finished!");
             else Console.WriteLine("Test failed!");
 
-            //for (int i = 0; i < arraySize-1; i++)Console.Write(orderedArray[i] + "; ");
-                
+            #if DEBUG
+            arraySize = 100;
+            for (int i = 0; i < arraySize-1; i++)Console.Write(orderedArray[i] + "; ");
+            #endif
+
 
             Console.WriteLine("\nTime to sort " + arraySize + " elements : "  + sw.Elapsed);
             Console.ReadKey();
