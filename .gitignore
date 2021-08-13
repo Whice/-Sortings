@@ -1,0 +1,10 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/slnx.sqlite
+/.vs/-Sortings/v16/Browse.VC.opendb
+/.vs/-Sortings/v16/Browse.VC.db-wal
+/.vs/-Sortings/v16/Browse.VC.db-shm
+/.vs/-Sortings/v16/Browse.VC.db
+/.vs/ProjectSettings.json
